@@ -1,6 +1,6 @@
 ﻿# Download the latest version of script
 $ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest https://raw.githubusercontent.com/RaySmalley/PowerShell/master/vhd-size-analysis.ps1 -OutFile $PSCommandPath
+Invoke-WebRequest https://raw.githubusercontent.com/RaySmalley/VHDSizeAnalysis/main/vhd-size-analysis.ps1 -OutFile $PSCommandPath
 
 # Test for elevation
 if (!([Security.Principal.WindowsPrincipal][Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] "Administrator")) {
