@@ -1,4 +1,8 @@
-﻿# Download the latest version of script
+﻿### VHD Size Analysis ###
+### Ray Smalley       ###
+### 2018              ###
+
+# Download the latest version of script
 $ProgressPreference = 'SilentlyContinue'
 Invoke-WebRequest https://raw.githubusercontent.com/RaySmalley/VHDSizeAnalysis/main/vhd-size-analysis.ps1 -OutFile $PSCommandPath
 
