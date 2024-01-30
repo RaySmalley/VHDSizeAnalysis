@@ -37,10 +37,11 @@ ForEach ($Volume in ($VHDs.Path).SubString(0,1) | Sort | Get-Unique) {
         "Available" = "$AvailableSpace GB"
     }
     $ResultsTable += $Results | Select Volume,Used,Capacity,"Allocated By VHDs","Used By Other",Available
+    if ($AvailableSpace -lt 0) { $OverProvisioned = $true }
 }
 
 $ResultsTable | Format-Table -AutoSize
 
-if ($AvailableSpace -lt 0) { Write-Host -ForegroundColor Red "Warning: VHDs are over-provisioned and will cause VM to crash if filled up past host disk capacity. Either free up host disk space used by files other than VHDs, or shrink the max size of the VHDs accordindly."`n }
+if ($OverProvisioned -eq $true) { Write-Host -ForegroundColor Red "Warning: VHDs are over-provisioned and will cause VM to crash if filled up past host disk capacity. Either free up host disk space used by files other than VHDs, or shrink the max size of the VHDs accordindly."`n }
 
 Read-Host -Prompt "Press Enter to exit"
